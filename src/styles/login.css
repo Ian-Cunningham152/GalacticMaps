@@ -1,0 +1,42 @@
+h1 {
+    font-size: 200%;
+}
+
+html {
+    background-image: url("../images/LoginBackground.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 30px 40px 40px 40px;
+    width: 300px;
+    background: grey;
+    border-radius: 8px;
+}
+
+.login-form input,
+.login-form button {
+    padding: 10px;
+    font-size: 16px;
+    border-style: solid;
+    border-width: 4px;
+    border-color: black;
+}
+
+img {
+    width: 80px;
+    margin: -20px;
+}
