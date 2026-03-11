@@ -26,6 +26,7 @@ function initMap() {
   // Initialize the DirectionsService and DirectionsRenderer
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
+  directionsRenderer.setPanel(document.getElementById("directions-panel"));
 
   // Bind the DirectionsRenderer to the map
   directionsRenderer.setMap(map);
@@ -64,6 +65,7 @@ function setupAutocomplete() {
       return;
     }
 
+    
     // Store the selected place ID
     originPlaceId = place.place_id;
   });
@@ -73,9 +75,10 @@ function setupAutocomplete() {
 
     // Clear previous place ID
     const place = destinationAutocomplete.getPlace();
+    console.log(place);
 
     // Validate that a place was selected
-    if (!place.place_id) {
+    if (!place.place_id || place == null) {
       alert("Please select a location from the dropdown.");
       return;
     }
@@ -258,6 +261,8 @@ function startRoute() {
     if (status === "OK") {
       directionsRenderer.setDirections(result);
       showDirections(result);
+    } else if (status === "ZERO_RESULTS") {
+      alert("No route could be found between the origin and destination.");
     } else {
       alert("Route failed: " + status);
     }
