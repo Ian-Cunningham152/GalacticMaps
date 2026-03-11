@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Routing App</title>
+  <style>
+    #map {
+      height: 500px;
+      width: 100%;
+      margin-top: 10px;
+    }
+
+    input {
+      margin: 5px;
+      padding: 5px;
+      width: 200px;
+    }
+
+    button {
+      padding: 5px 10px;
+      margin: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h2>GalacticMaps</h2>
+
+<input id="origin-input" placeholder="Enter origin">
+<input id="destination-input" placeholder="Enter destination">
+
+<br><br>
+
+<button onclick="addWaypoint()">Add Waypoint</button>
+<button onclick="useMyLocation()">Use My Location</button>
+<button onclick="startRoute()">Start Route</button>
+
+<div id="waypoints-container"></div>
+
+<h3>Directions</h3>
+<div id="directions-panel"></div>
+<div id="map"></div>
+
+<script src="main.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrDIVNYbR_01jL1I4SnNRqyk-yC1NtaCg&libraries=places&callback=initMap">
+</script>
+
+</body>
+</html>
