@@ -286,12 +286,62 @@ function showDirections(result) {
 
   // Convert distance from meters to miles and duration from seconds to minutes
   let miles = totalDistance * 0.000621371;
+  
+  // Round duration to nearest minute
   let minutes = Math.round(totalDuration / 60);
+  let hours;
+  
+  // Format the duration as hours and minutes
+  // If duration is less than 2 hours, display as "X minutes" or "1 hour X minutes"
+  if(minutes < 119) {
+
+    // If duration is between 1 and 2 hours, display as "1 hour X minutes"
+    if(minutes/60 >= 1) {
+      hours = 1 + " hour";
+      // If there is 1 minute or less remaining, display as "1 minute"
+      if(minutes % 60 <= 1) {
+        minutes = 1 + " minute";
+        time = hours + " " + minutes;
+
+      // If there is more than 1 minute remaining, display as "X minutes"
+      } else {
+        minutes = minutes % 60 + " minutes";
+        time = hours + " " + minutes;
+      }
+    
+    // If duration is less than 1 hour, display as "X minutes"
+    } else {  
+      if(minutes % 60 <= 1) {
+        minutes = 1 + " minute";
+        time = minutes;
+
+      // If there is more than 1 minute remaining, display as "X minutes"
+      } else {
+        minutes = minutes % 60 + " minutes";
+        time = minutes;
+      }
+    }
+
+  // If duration is 2 hours or more, display as "X hours Y minutes"
+  } else {
+    // Round hours to nearest whole number and display as "X hours"
+    hours = Math.round(minutes/60) + " hours";
+
+    // If there is 1 minute or less remaining, display as "1 minute"
+    if(minutes % 60 <= 1) {
+      minutes = 1 + " minute";
+      time = hours + " " + minutes;
+
+    // If there is more than 1 minute remaining, display as "X minutes"
+    } else {
+      minutes = minutes % 60 + " minutes";
+      time = hours + " " + minutes;
+    }
+  }
 
   // Display the distance and duration in the directions panel
   document.getElementById("directions-panel").innerHTML =
-    `Distance: ${miles.toFixed(2)} miles<br>
-    Time: ${minutes} minutes`;
+    `Distance: ${miles.toFixed(2)} miles<br>` + `Duration: ${time}`;
 }
 
 // Make initMap available globally for the Google Maps API callback
