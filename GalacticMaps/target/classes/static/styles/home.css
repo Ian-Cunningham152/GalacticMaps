@@ -1,0 +1,97 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+
+#map {
+    flex: 1;
+    width: 100%;
+}
+
+#directions-panel {
+    margin-top: 10px;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    border: 3px solid black;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    width: 100%;
+    border: 3px solid black;
+    background-color: white;
+}
+
+aside {
+    border: 3px solid black;
+    width: 350px;
+    background-color: rgba(98, 179, 255, 0.932);
+    margin: 2px 0 2px 2px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+.map-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+aside img {
+    width: 80px;
+    margin: 20px;
+}
+
+.horizontal-scroll-container {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: grey;
+}
+
+.horizontal-scroll-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+
+
+.waypoint-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.waypoint-row input {
+    flex: 1;
+}
+
+h2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 200%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 0;
+}
+
+/*Makes the removeBtn a more decent size*/
+.removeBtn {
+    width: auto;
+}

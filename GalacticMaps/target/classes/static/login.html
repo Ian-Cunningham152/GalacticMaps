@@ -1,0 +1,22 @@
+<!Doctype html>
+
+<head>
+    <link rel ="stylesheet" href="./styles/login.css">
+    <title>GalicticMaps Login</title>
+</head>
+
+<body>
+    <div class="login-contianer">
+        <form class="login-form" id="login-form">
+            <img src="./images/GalacticMapsLogo.png" alt="Logo">
+            <h1>Sign in</h1>
+            <input id="login-username" type="text" placeholder="Username" required>
+            <input id="login-password" type="password" placeholder="Password" required>
+            <p id="login-message"></p>
+            <button type="submit">Login</button>
+            <button type="button" onclick="window.location.href='CreateAccount.html'">New Account</button>
+            <a href="ForgotPassword.html">Forgot Password?</a>
+        </form>
+    </div>
+    <script src="./js/auth.js"></script>
+</body>

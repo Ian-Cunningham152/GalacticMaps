@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>GalacticMaps</title>
+  <link rel ="stylesheet" href="./styles/home.css">
+</head>
+
+<body>
+    <div class="layout">
+        <aside>
+            <div class="horizontal-scroll-container">
+                <div class="horizontal-scroll-content">
+                    <img src="./images/GalacticMapsLogo.png" alt="Logo">
+
+                    <h2>GalacticMaps</h2>
+                    <button onclick="useMyLocation()">Use My Location</button>
+                    <input id="origin-input" placeholder="Enter origin">
+                    <input id="destination-input" placeholder="Enter destination">
+                    <div id="waypoints-container"></div>
+                    <button onclick="addWaypoint()">Add Waypoint</button>
+                    <button onclick="startRoute()">Start Route</button>
+                    <div id="directions-panel"></div>
+                </div>
+            </div>
+        </aside>
+    <div id="map"></div>
+</div>
+
+<script src="./js/main.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrDIVNYbR_01jL1I4SnNRqyk-yC1NtaCg&libraries=places&callback=initMap">
+</script>
+
+</body>
+</html>
