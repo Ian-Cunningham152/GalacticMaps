@@ -1,40 +1,36 @@
 <!DOCTYPE html>
-
+<html>
 <head>
-    <link rel ="stylesheet" href="./styles/home.css">
-    <title>GalicticMaps</title>
+  <title>GalacticMaps</title>
+  <link rel ="stylesheet" href="./styles/home.css">
 </head>
 
 <body>
-    <aside>
-        <img src="./images/GalacticMapsLogo.png" alt="Logo">
-        <h1>Starting Address</h1>
-        <input type="text" placeholder="Starting Address">
-        <div id=waypoint1>
-            <h1>Waypoint 1</h1>
-            <input type="text" placeholder ="Waypoint 1">
-        </div>
-        <div id=waypoint2>
-            <h1>Waypoint 2</h1>
-            <input type="text" placeholder ="Waypoint 2">
-        </div>
-        <div id=waypoint3>
-            <h1>Waypoint 3</h1>
-            <input type="text" placeholder ="Waypoint 3">
-        </div>
-        <div id=waypoint4>
-            <h1>Waypoint 4</h1>
-            <input type="text" placeholder ="Waypoint 4">
-        </div>
-        <div id=waypoint5>
-            <h1>Waypoint 5</h1>
-            <input type="text" placeholder ="Waypoint 5">
-        </div>
-        <h1>Destination</h1>
-        <input type="text" placeholder="Destination">
-        <button type="button" onclick="window.location.href='home.html'">Add Waypoint</button>
-        <button type="button" onclick="window.location.href='home.html'">Route</button>
-        <button type="button" onclick="window.location.href='home.html'">Favorites</button>
-        
-    </aside>
+    <div class="layout">
+        <aside>
+            <div class="horizontal-scroll-container">
+                <div class="horizontal-scroll-content">
+                    <img src="./images/GalacticMapsLogo.png" alt="Logo">
+
+                    <h2>GalacticMaps</h2>
+                    <button onclick="useMyLocation()">Use My Location</button>
+                    <input id="origin-input" placeholder="Enter origin">
+                    <input id="destination-input" placeholder="Enter destination">
+                    <div id="waypoints-container"></div>
+                    <button onclick="addWaypoint()">Add Waypoint</button>
+                    <button onclick="startRoute()">Start Route</button>
+                    <div id="directions-panel"></div>
+                </div>
+            </div>
+        </aside>
+    <div id="map"></div>
+</div>
+
+<script src="./js/main.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrDIVNYbR_01jL1I4SnNRqyk-yC1NtaCg&libraries=places&callback=initMap">
+</script>
+
 </body>
+</html>
