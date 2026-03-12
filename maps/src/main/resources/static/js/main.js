@@ -342,3 +342,17 @@ function showDirections(result) {
 
 // Make initMap available globally for the Google Maps API callback
 window.initMap = initMap;
+
+//logout window/button logic
+const logout = document.getElementById("logout_window");
+const logoutOpenBtn = document.getElementById("open_logout_window");
+const closeLogoutBtn = document.getElementById("close_logout_window_button");
+
+//opens logout window
+logoutOpenBtn.onclick = function() {
+    logout.style.display = "block";
+}
+
+closeLogoutBtn.onclick = function() {
+    logout.style.display = "none";
+}

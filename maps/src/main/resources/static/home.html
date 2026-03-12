@@ -24,10 +24,18 @@
                 </div>
             </div>
         </aside>
-    <div class="logout_button">
-        <button type="button" onclick="window.location.href='login.html'">Logout</button>
+    <div id="logout_button" class="logout_button">
+        <button id="open_logout_window">Logout</button>
     </div>
     <div id="map"></div>
+    <div id="logout_window" class="logout_window">
+        <div class="logout_content">
+            <span id="close_logout_window">&times;</span>
+            <h2>Are you sure you want to log out?</h2>
+            <button id="close_logout_window_button">No</button>
+            <button id="button" onclick="window.location.href='login.html'">Yes</button>
+        </div>
+    </div>
 </div>
 
 <script src="./js/main.js"></script>

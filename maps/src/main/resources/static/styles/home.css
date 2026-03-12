@@ -115,3 +115,24 @@ h2 {
 .removeBtn {
     width: auto;
 }
+
+/*logout window*/
+.logout_window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 20px;
+    background-color: lightgray;
+    z-index: 2000;
+    width: 400px;
+}
+
+/*.logout_content {
+    background-color: lightgray;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}*/
