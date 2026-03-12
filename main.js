@@ -53,6 +53,29 @@ function setupAutocomplete() {
     fields: ["place_id", "formatted_address"]
   });
 
+  // Add listener to clear origin place ID when input is emptied or changed
+  originInput.addEventListener("input", () => {
+    if (originInput.value === "") {
+      originPlaceId = null;
+      originSelected = false;
+    } else if (originFormattedAddress && originInput.value !== originFormattedAddress) {
+      originPlaceId = null;
+      originSelected = false;
+    }
+  });
+
+  // Add listener to clear destination place ID when input is emptied or changed
+  destinationInput.addEventListener("input", () => {
+    if (destinationInput.value === "") {
+      destinationPlaceId = null;
+      destinationSelected = false;
+    } else if (destinationFormattedAddress && destinationInput.value !== destinationFormattedAddress) {
+      // user changed text after selecting a place
+      destinationPlaceId = null;
+      destinationSelected = false;
+    }
+  });
+
   // Add listeners for origin place selection
   originAutocomplete.addListener("place_changed", () => {
 
@@ -65,9 +88,10 @@ function setupAutocomplete() {
       return;
     }
 
-    
-    // Store the selected place ID
+    // Store the selected place ID and its formatted address
     originPlaceId = place.place_id;
+    originFormattedAddress = place.formatted_address || originInput.value;
+    originSelected = true; // mark explicit selection
   });
 
   // Add listener for destination place selection
@@ -83,8 +107,10 @@ function setupAutocomplete() {
       return;
     }
 
-    // Store the selected place ID
+    // Store the selected place ID and formatted address
     destinationPlaceId = place.place_id;
+    destinationFormattedAddress = place.formatted_address || destinationInput.value;
+    destinationSelected = true; // mark explicit selection
   });
 }
 
@@ -99,6 +125,8 @@ function addWaypoint() {
 
   // Create a new input for the waypoint
   const container = document.getElementById("waypoints-container");
+
+  const index = waypointInputs.length;
 
   // Create a wrapper div for the input and remove button
   const wrapper = document.createElement("div");
@@ -115,10 +143,8 @@ function addWaypoint() {
   removeBtn.onclick = function () {
     container.removeChild(wrapper);
 
-    // Remove the corresponding place ID from the waypoints array
+    // Remove the corresponding input from the arrays
     waypointInputs = waypointInputs.filter(i => i !== input);
-
-    // Remove the place ID from the waypointPlaceIds array    
     waypointPlaceIds = waypointPlaceIds.filter(id => id !== input.dataset.placeId);
   };
 
@@ -133,7 +159,7 @@ function addWaypoint() {
 
   // Set up autocomplete for the new waypoint input
   const autocomplete = new google.maps.places.Autocomplete(input, {
-    fields: ["place_id"]
+    fields: ["place_id", "formatted_address"]
   });
 
   // Add listener for waypoint place selection
@@ -147,11 +173,22 @@ function addWaypoint() {
       return;
     }
 
-    // Store the selected place ID in a data attribute on the input
+    // Store the selected place ID and formatted address in data attributes
     input.dataset.placeId = place.place_id;
-    waypointPlaceIds.push(place.place_id);
+    input.dataset.formattedAddress = place.formatted_address || input.value;
+    waypointPlaceIds[index] = place.place_id;
+  });
 
-
+  // Clear waypoint place ID if text no longer matches selected address
+  input.addEventListener("input", () => {
+    if (input.value === "") {
+      input.dataset.placeId = null;
+      input.dataset.formattedAddress = null;
+    } else if (input.dataset.formattedAddress && input.value !== input.dataset.formattedAddress) {
+      waypointPlaceIds.removeChild(index);
+      input.dataset.placeId = null;
+      input.dataset.formattedAddress = null;
+    }
   });
 }
 
@@ -232,9 +269,10 @@ function startRoute() {
     return;
   }
 
-  // Validate that all waypoint inputs have valid place IDs
-  if (waypointInputs.length > 0 && waypointPlaceIds.length === 0) {
-    alert("Please select a valid location from the dropdown for all waypoints.");
+  // Validate that all waypoint inputs have valid place IDs (one per input)
+  if (waypointInputs.length > 0 && waypointPlaceIds.length !== waypointInputs.length) {
+    console.log(waypointPlaceIds);
+    alert("Please select a valid location from the dropdown for every waypoint.");
     return;
   }  
 
@@ -244,7 +282,6 @@ function startRoute() {
     stopover: true
   }));
 
-
   // Create the request object for the DirectionsService route method
   const request = {
     origin: { placeId: originPlaceId },
@@ -253,6 +290,7 @@ function startRoute() {
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.IMPERIAL
   };
+  console.log(request);
 
   // Call the route method of the DirectionsService to calculate the route
   directionsService.route(request, (result, status) => {
@@ -263,8 +301,10 @@ function startRoute() {
       showDirections(result);
     } else if (status === "ZERO_RESULTS") {
       alert("No route could be found between the origin and destination.");
+    } else if (status === "INVALID_REQUEST") {
+      alert("Please check that all waypoints are from the dropdown");
     } else {
-      alert("Route failed: " + status);
+      alert("Could not calculate route. Please try again.");
     }
 
   });
