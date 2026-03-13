@@ -77,6 +77,10 @@ aside img {
     padding: 10px;
 }
 
+.save-route-button {
+    display: none;
+}
+
 
 
 .waypoint-row {
@@ -165,4 +169,55 @@ h2 {
 
 .close {
     display: none;
+}
+
+.save_route_window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 20px;
+    background-color: lightgray;
+    z-index: 2000;
+    width: 400px;
+    text-align: center;
+}
+
+.save_route_window button {
+    border: solid 3px black;
+    width: 100px;
+    margin: 10px 30px;
+}
+
+.save_route_window input {
+    display: block;    
+    margin: 10px auto; 
+    width: 80%;           
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box; 
+    text-align: center;     
+}
+
+/*logout window*/
+.remove_route_window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 20px;
+    background-color: lightgray;
+    z-index: 3000;
+    width: 400px;
+    text-align: center;
+}
+
+.remove_route_window button {
+    border: solid 3px black;
+    width: 100px;
+    margin: 10px 30px;
 }

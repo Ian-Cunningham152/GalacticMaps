@@ -1,3 +1,4 @@
+
 package com.galicticmaps.maps.routing;
 
 import java.sql.SQLException;
@@ -28,7 +29,7 @@ public class RouteController {
     @GetMapping("/favorites")
     public ResponseEntity<?> getFavorites(@RequestParam Integer userId) {
         try {
-            List<FavoriteRoute> favorites = routeService.getFavoriteRoutes(userId);
+            List<String> favorites = routeService.getFavoriteRoutes(userId);
             return ResponseEntity.ok(favorites);
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body(Map.of("message", ex.getMessage()));

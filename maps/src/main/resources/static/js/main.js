@@ -12,6 +12,9 @@ let waypointInputs = [];
 // Maximum number of waypoints allowed 
 const MAX_WAYPOINTS = 5;
 
+const user = JSON.parse(localStorage.getItem('gmUser'));
+const userId = user.userId;
+
 // Initialize the map and services
 function initMap() {
 
@@ -277,6 +280,12 @@ function startRoute() {
     return;
   }  
 
+  const savebutton = document.querySelector('.save-route-button');
+  if(savebutton) {
+      savebutton.style.display = 'block';
+  }
+
+
   // Build the waypoints array for the DirectionsService request
   let waypoints = waypointInputs.map(input => ({
     location : { placeId: input.dataset.placeId },
@@ -414,8 +423,13 @@ function toggleFavorites() {
         routeButton.innerText = "Route " + (i+1);
 
         const removeBtn = document.createElement("img");
+        removeBtn.className ="remove-route";
         removeBtn.src = "./images/Trashcan.png";
-        removeBtn.className = "trash-btn";
+        
+        removeBtn.addEventListener("click", function() {
+           removeRoute.style.display = "block";
+
+        });
 
         row.appendChild(routeButton);
         row.appendChild(removeBtn);
@@ -434,6 +448,78 @@ logoutOpenBtn.onclick = function() {
     logout.style.display = "block";
 }
 
+//closes logout window
 closeLogoutBtn.onclick = function() {
     logout.style.display = "none";
+}
+
+//save route window logic
+const saveRoute = document.getElementById("save-route-button");
+const saveRouteWindow = document.getElementById("save_route_window");
+const confirmSaveRoute = document.getElementById("confirm_save_route");
+const cancelSaveRoute = document.getElementById("close_save_route_button");
+
+confirmSaveRoute.onclick = saveFavoriteRoute;
+
+//opens save route window
+saveRoute.onclick = function() {
+    saveRouteWindow.style.display = "block";
+}
+
+cancelSaveRoute.onclick = function() {
+    saveRouteWindow.style.display = "none";
+}
+
+//remove route window logic
+const removeRoute = document.getElementById("remove_route_window");
+const removeRouteOpenBtn = document.getElementById("confirm_remove_route_button");
+const removeRouteCloseBtn = document.getElementById("cancel_remove_route_button");
+
+//closes logout window
+removeRouteCloseBtn.onclick = function() {
+    removeRoute.style.display = "none";
+}
+
+async function saveFavoriteRoute() {
+    const routeNameInput = document.getElementById("Route_name");
+    const routeName = routeNameInput.value.trim();
+
+    if (!routeName) {
+        alert("Please enter a route name.");
+        return;
+    }
+
+    if (!originPlaceId || !destinationPlaceId) {
+        alert("Origin and destination must be selected.");
+        return;
+    }
+
+    const data = {
+        userId: userId,
+        routeName: routeName,
+        waypointPlaceIds: waypointPlaceIds
+    };
+
+    try {
+        const response = await fetch("/api/routes/favorites", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert(result.message);
+            document.getElementById("save_route_window").style.display = "none";
+        } else {
+            alert(result.message || "Could not save route.");
+        }
+
+    } catch (error) {
+        console.error("Error saving favorite route:", error);
+        alert("Error connecting to server.");
+    }
 }

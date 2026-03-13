@@ -22,6 +22,7 @@
                     <button onclick="startRoute()">Start Route</button>
                     <button onclick="toggleFavorites()">Favorites</button>
                     <div id="favorites-panel"></div>
+                    <button class="save-route-button" id="save-route-button">Save Route</button>
                     <div id="directions-panel"></div>
                 </div>
             </div>
@@ -35,6 +36,21 @@
             <h2>Are you sure you want to log out?</h2>
             <button id="close_logout_window_button">No</button>
             <button id="button" onclick="window.location.href='login.html'">Yes</button>
+        </div>
+    </div>
+    <div id="remove_route_window" class="remove_route_window">
+        <div class="remove_route_content">
+            <h2>Are you sure you want to delete this favorite route??</h2>
+            <button id="cancel_remove_route_button">No</button>
+            <button id="confirm_remove_route_button">Yes</button>
+        </div>
+    </div>
+    <div id="save_route_window" class="save_route_window">
+        <div class="save_route content">
+            <h2>What would you like to name this route?</h2>
+            <input id="Route_name" type="text" placeholder="Route Name" required>
+            <button id="close_save_route_button">Cancel</button>
+            <button id="confirm_save_route">Confirm</button>
         </div>
     </div>
 </div>
