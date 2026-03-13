@@ -26,7 +26,7 @@ function initMap() {
   // Initialize the DirectionsService and DirectionsRenderer
   directionsService = new google.maps.DirectionsService();
   directionsRenderer = new google.maps.DirectionsRenderer();
-   directionsRenderer.setPanel(document.getElementById("directions-panel"));
+  directionsRenderer.setPanel(document.getElementById("directions-panel"));
 
   // Bind the DirectionsRenderer to the map
   directionsRenderer.setMap(map);
@@ -53,6 +53,29 @@ function setupAutocomplete() {
     fields: ["place_id", "formatted_address"]
   });
 
+  // Add listener to clear origin place ID when input is emptied or changed
+  originInput.addEventListener("input", () => {
+    if (originInput.value === "") {
+      originPlaceId = null;
+      originSelected = false;
+    } else if (originFormattedAddress && originInput.value !== originFormattedAddress) {
+      originPlaceId = null;
+      originSelected = false;
+    }
+  });
+
+  // Add listener to clear destination place ID when input is emptied or changed
+  destinationInput.addEventListener("input", () => {
+    if (destinationInput.value === "") {
+      destinationPlaceId = null;
+      destinationSelected = false;
+    } else if (destinationFormattedAddress && destinationInput.value !== destinationFormattedAddress) {
+      // user changed text after selecting a place
+      destinationPlaceId = null;
+      destinationSelected = false;
+    }
+  });
+
   // Add listeners for origin place selection
   originAutocomplete.addListener("place_changed", () => {
 
@@ -65,8 +88,10 @@ function setupAutocomplete() {
       return;
     }
 
-    // Store the selected place ID
+    // Store the selected place ID and its formatted address
     originPlaceId = place.place_id;
+    originFormattedAddress = place.formatted_address || originInput.value;
+    originSelected = true; // mark explicit selection
   });
 
   // Add listener for destination place selection
@@ -74,15 +99,18 @@ function setupAutocomplete() {
 
     // Clear previous place ID
     const place = destinationAutocomplete.getPlace();
+    console.log(place);
 
     // Validate that a place was selected
-    if (!place.place_id) {
+    if (!place.place_id || place == null) {
       alert("Please select a location from the dropdown.");
       return;
     }
 
-    // Store the selected place ID
+    // Store the selected place ID and formatted address
     destinationPlaceId = place.place_id;
+    destinationFormattedAddress = place.formatted_address || destinationInput.value;
+    destinationSelected = true; // mark explicit selection
   });
 }
 
@@ -98,6 +126,8 @@ function addWaypoint() {
   // Create a new input for the waypoint
   const container = document.getElementById("waypoints-container");
 
+  const index = waypointInputs.length;
+
   // Create a wrapper div for the input and remove button
   const wrapper = document.createElement("div");
   wrapper.className = "waypoint-row";
@@ -108,17 +138,14 @@ function addWaypoint() {
 
   // Create the remove button
   const removeBtn = document.createElement("button");
-  removeBtn.className = "removeBtn";
   removeBtn.innerText = "Remove";
 
   // Add click listener to remove the waypoint
   removeBtn.onclick = function () {
     container.removeChild(wrapper);
 
-    // Remove the corresponding place ID from the waypoints array
+    // Remove the corresponding input from the arrays
     waypointInputs = waypointInputs.filter(i => i !== input);
-
-    // Remove the place ID from the waypointPlaceIds array    
     waypointPlaceIds = waypointPlaceIds.filter(id => id !== input.dataset.placeId);
   };
 
@@ -133,7 +160,7 @@ function addWaypoint() {
 
   // Set up autocomplete for the new waypoint input
   const autocomplete = new google.maps.places.Autocomplete(input, {
-    fields: ["place_id"]
+    fields: ["place_id", "formatted_address"]
   });
 
   // Add listener for waypoint place selection
@@ -147,11 +174,22 @@ function addWaypoint() {
       return;
     }
 
-    // Store the selected place ID in a data attribute on the input
+    // Store the selected place ID and formatted address in data attributes
     input.dataset.placeId = place.place_id;
-    waypointPlaceIds.push(place.place_id);
+    input.dataset.formattedAddress = place.formatted_address || input.value;
+    waypointPlaceIds[index] = place.place_id;
+  });
 
-
+  // Clear waypoint place ID if text no longer matches selected address
+  input.addEventListener("input", () => {
+    if (input.value === "") {
+      input.dataset.placeId = null;
+      input.dataset.formattedAddress = null;
+    } else if (input.dataset.formattedAddress && input.value !== input.dataset.formattedAddress) {
+      waypointPlaceIds.removeChild(index);
+      input.dataset.placeId = null;
+      input.dataset.formattedAddress = null;
+    }
   });
 }
 
@@ -232,9 +270,10 @@ function startRoute() {
     return;
   }
 
-  // Validate that all waypoint inputs have valid place IDs
-  if (waypointInputs.length > 0 && waypointPlaceIds.length === 0) {
-    alert("Please select a valid location from the dropdown for all waypoints.");
+  // Validate that all waypoint inputs have valid place IDs (one per input)
+  if (waypointInputs.length > 0 && waypointPlaceIds.length !== waypointInputs.length) {
+    console.log(waypointPlaceIds);
+    alert("Please select a valid location from the dropdown for every waypoint.");
     return;
   }  
 
@@ -244,7 +283,6 @@ function startRoute() {
     stopover: true
   }));
 
-
   // Create the request object for the DirectionsService route method
   const request = {
     origin: { placeId: originPlaceId },
@@ -253,6 +291,7 @@ function startRoute() {
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.IMPERIAL
   };
+  console.log(request);
 
   // Call the route method of the DirectionsService to calculate the route
   directionsService.route(request, (result, status) => {
@@ -261,8 +300,12 @@ function startRoute() {
     if (status === "OK") {
       directionsRenderer.setDirections(result);
       showDirections(result);
+    } else if (status === "ZERO_RESULTS") {
+      alert("No route could be found between the origin and destination.");
+    } else if (status === "INVALID_REQUEST") {
+      alert("Please check that all waypoints are from the dropdown");
     } else {
-      alert("Route failed: " + status);
+      alert("Could not calculate route. Please try again.");
     }
 
   });
@@ -284,9 +327,11 @@ function showDirections(result) {
 
   // Convert distance from meters to miles and duration from seconds to minutes
   let miles = totalDistance * 0.000621371;
+  
+  // Round duration to nearest minute
   let minutes = Math.round(totalDuration / 60);
   let hours;
-
+  
   // Format the duration as hours and minutes
   // If duration is less than 2 hours, display as "X minutes" or "1 hour X minutes"
   if(minutes < 119) {
@@ -323,7 +368,7 @@ function showDirections(result) {
     // Round hours to nearest whole number and display as "X hours"
     hours = Math.round(minutes/60) + " hours";
 
-  // If there is 1 minute or less remaining, display as "1 minute"
+    // If there is 1 minute or less remaining, display as "1 minute"
     if(minutes % 60 <= 1) {
       minutes = 1 + " minute";
       time = hours + " " + minutes;
@@ -342,6 +387,42 @@ function showDirections(result) {
 
 // Make initMap available globally for the Google Maps API callback
 window.initMap = initMap;
+
+//THIS IS CURRENTLY EMPTY CODE FOR FRONT END, IT NEEDS TO CONNECT TO THE DATABASE
+function toggleFavorites() {
+    console.log("Favorites clicked");
+    const container = document.getElementById("favorites-panel");
+
+    if(!container) {
+      console.error("favorites-panel not found");
+      return;
+    }
+
+    if(container.style.display === "block") {
+      container.style.display = "none";
+      return;
+    }
+
+    container.style.display = "block";
+
+    if(container.children.length === 0){
+      for(let i=0;i<5;i++) {
+        const row = document.createElement("div");
+        row.className = "favorites-row";
+
+        const routeButton = document.createElement("button");
+        routeButton.innerText = "Route " + (i+1);
+
+        const removeBtn = document.createElement("img");
+        removeBtn.src = "./images/Trashcan.png";
+        removeBtn.className = "trash-btn";
+
+        row.appendChild(routeButton);
+        row.appendChild(removeBtn);
+        container.appendChild(row);
+      }
+    }
+}
 
 //logout window/button logic
 const logout = document.getElementById("logout_window");

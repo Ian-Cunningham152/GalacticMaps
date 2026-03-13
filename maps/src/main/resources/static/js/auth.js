@@ -47,6 +47,9 @@ window.addEventListener('DOMContentLoaded', () => {
                 password: passwordInput.value
             });
 
+            //where the userID is stored
+            //const user = JSON.parse(localStorage.getItem("gmUser"));
+            //const userId = user.userId;
             if (result.ok) {
                 localStorage.setItem('gmUser', JSON.stringify(result.data));
                 window.location.href = 'home.html';
