@@ -1,9 +1,11 @@
 package com.galicticmaps.maps.routing;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class RouteService {
@@ -14,7 +16,8 @@ public class RouteService {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    public boolean saveFavoriteRoute(int userId, String routeName, List<String> waypointPlaceIds) {
+   @Transactional
+public boolean saveFavoriteRoute(int userId, String routeName, String originPlaceId, String destinationPlaceId, List<String> waypointPlaceIds){
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM Route WHERE UserID = ?",
                 Integer.class,
@@ -26,9 +29,11 @@ public class RouteService {
         }
 
         jdbcTemplate.update(
-                "INSERT INTO Route (UserID, RouteName) VALUES (?, ?)",
+                "INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)",
                 userId,
-                routeName
+                routeName,
+                originPlaceId,
+                destinationPlaceId
         );
 
         Integer routeId = jdbcTemplate.queryForObject(
@@ -63,26 +68,41 @@ public class RouteService {
         return rows > 0;
     }
 
-    public List<String> getFavoriteRoutes(int userId) {
-        return jdbcTemplate.query(
-                "SELECT RouteID, RouteName FROM Route WHERE UserID = ?",
-                (rs, rowNum) -> rs.getInt("RouteID") + " - " + rs.getString("RouteName"),
-                userId
-        );
-    }
-    public boolean renameFavoriteRoute(int userId, int routeId, String newRouteName) {
-    if (newRouteName == null || newRouteName.trim().isEmpty()) {
-        return false;
-    }
-
-    int rows = jdbcTemplate.update(
-            "UPDATE Route SET RouteName = ? WHERE RouteID = ? AND UserID = ?",
-            newRouteName.trim(),
-            routeId,
+public List<Map<String, Object>> getFavoriteRoutes(int userId) {
+    return jdbcTemplate.query(
+            "SELECT RouteID, RouteName FROM Route WHERE UserID = ? ORDER BY RouteID",
+            (rs, rowNum) -> Map.of(
+                    "routeId", rs.getInt("RouteID"),
+                    "routeName", rs.getString("RouteName")
+            ),
             userId
     );
+}
 
-    return rows > 0;
-    }
+ public Map<String, Object> getFavoriteRouteById(int userId, int routeId) {
+    Map<String, Object> route = jdbcTemplate.queryForObject(
+            "SELECT RouteID, RouteName, OriginPlaceID, DestinationPlaceID FROM Route WHERE RouteID = ? AND UserID = ?",
+            (rs, rowNum) -> Map.of(
+                    "routeId", rs.getInt("RouteID"),
+                    "routeName", rs.getString("RouteName"),
+                    "originPlaceId", rs.getString("OriginPlaceID"),
+                    "destinationPlaceId", rs.getString("DestinationPlaceID")
+            ),
+            routeId, userId
+    );
 
+    List<String> waypointPlaceIds = jdbcTemplate.query(
+            "SELECT PlaceID FROM Route_Waypoints WHERE RouteID = ? ORDER BY Seq",
+            (rs, rowNum) -> rs.getString("PlaceID"),
+            routeId
+    );
+
+    return Map.of(
+            "routeId", route.get("routeId"),
+            "routeName", route.get("routeName"),
+            "originPlaceId", route.get("originPlaceId"),
+            "destinationPlaceId", route.get("destinationPlaceId"),
+            "waypointPlaceIds", waypointPlaceIds
+    );
+}
 }

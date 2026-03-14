@@ -1,10 +1,8 @@
-
 package com.galicticmaps.maps.routing;
 
-import java.sql.SQLException;
-import java.util.List;
 import java.util.Map;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -26,32 +24,44 @@ public class RouteController {
         this.routeService = routeService;
     }
 
-    @GetMapping("/favorites")
-    public ResponseEntity<?> getFavorites(@RequestParam Integer userId) {
-        try {
-            List<String> favorites = routeService.getFavoriteRoutes(userId);
-            return ResponseEntity.ok(favorites);
-        } catch (IllegalArgumentException ex) {
-            return ResponseEntity.badRequest().body(Map.of("message", ex.getMessage()));
-        }
+  @GetMapping("/favorites/{routeId}")
+public ResponseEntity<?> getFavoriteRouteById(@PathVariable Integer routeId, @RequestParam Integer userId) {
+    try {
+        return ResponseEntity.ok(routeService.getFavoriteRouteById(userId, routeId));
+    } catch (Exception ex) {
+        ex.printStackTrace();
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                .body(Map.of("message", "Could not load saved route."));
     }
+}
 
     @PostMapping("/favorites")
     public ResponseEntity<?> saveFavorite(@RequestBody FavoriteRouteRequest request) {
         try {
             boolean saved = routeService.saveFavoriteRoute(
-                    request.userId(),
-                    request.routeName(),
-                    request.waypointPlaceIds());
-            if(!saved) {
+                request.userId(),
+                request.routeName(),
+                request.originPlaceId(),
+                request.destinationPlaceId(),
+                request.waypointPlaceIds()
+            );
+            if (!saved) {
                 return ResponseEntity.badRequest()
-                    .body(Map.of("message", "User already has 5 routes."));
+                        .body(Map.of("message", "User already has 5 routes."));
             }
 
             return ResponseEntity.status(HttpStatus.CREATED)
-                .body(Map.of("message", "Route saved successfully"));
+                    .body(Map.of("message", "Route saved successfully."));
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body(Map.of("message", ex.getMessage()));
+        } catch (DataAccessException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Database error while saving route."));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Unexpected error while saving route."));
         }
     }
 
@@ -66,21 +76,14 @@ public class RouteController {
             return ResponseEntity.ok(Map.of("message", "Favorite route deleted."));
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().body(Map.of("message", ex.getMessage()));
-        } catch (SQLException ex) {
+        } catch (DataAccessException ex) {
+            ex.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                    .body(Map.of("message", "Could not delete favorite route."));
+                    .body(Map.of("message", "Database error while deleting route."));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Unexpected error while deleting route."));
         }
-    }
-    
-    @PostMapping("/renameRoute")
-    public String renameRoute(@RequestParam int userId,
-                              @RequestParam int routeId,
-                              @RequestParam String newRouteName) {
-
-        boolean success = routeService.renameFavoriteRoute(userId, routeId, newRouteName);
-
-        return success
-            ? "redirect:/favorites?success=renamed"
-            : "redirect:/favorites?error=renamefailed";
     }
 }
