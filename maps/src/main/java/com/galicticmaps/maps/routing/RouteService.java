@@ -7,10 +7,14 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 @Service
 public class RouteService {
 
     private final JdbcTemplate jdbcTemplate;
+    private static final Logger logger = LoggerFactory.getLogger(RouteService.class);
 
     public RouteService(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -18,6 +22,10 @@ public class RouteService {
 
    @Transactional
 public boolean saveFavoriteRoute(int userId, String routeName, String originPlaceId, String destinationPlaceId, List<String> waypointPlaceIds){
+        logger.debug("UserId = {}", userId);
+        logger.debug("RouteName = {}", routeName);
+        logger.debug("OriginPlaceId = {}", originPlaceId);
+        logger.debug("DestinationPlaceId = {}", destinationPlaceId);
         Integer count = jdbcTemplate.queryForObject(
                 "SELECT COUNT(*) FROM Route WHERE UserID = ?",
                 Integer.class,

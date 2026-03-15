@@ -6,7 +6,6 @@
  */
 package com.galicticmaps.maps;
 import java.sql.*;
-import java.util.*;
 
 public class DataBaseManager {
     public static String dburl = "jdbc:mysql://127.0.0.1:3306/galacticMaps";

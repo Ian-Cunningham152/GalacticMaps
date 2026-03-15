@@ -1,0 +1,428 @@
+2026-03-14T16:50:13.831-07:00  INFO 13256 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 13256 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T16:50:13.971-07:00  INFO 13256 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T16:50:16.089-07:00  INFO 13256 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T16:50:16.254-07:00  INFO 13256 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T16:50:16.256-07:00  INFO 13256 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T16:50:16.424-07:00  INFO 13256 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2316 ms
+2026-03-14T16:50:16.788-07:00  INFO 13256 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T16:50:17.597-07:00  INFO 13256 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T16:50:17.605-07:00  INFO 13256 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.67 seconds (process running for 5.361)
+2026-03-14T16:50:46.052-07:00  INFO 13256 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T16:50:46.068-07:00  INFO 13256 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T16:50:46.068-07:00  INFO 13256 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T16:50:46.313-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T16:50:46.313-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T16:50:46.329-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T16:50:46.329-07:00  INFO 13256 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T16:50:47.042-07:00  INFO 13256 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@55cf9fff
+2026-03-14T16:50:47.042-07:00  INFO 13256 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T16:51:35.105-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T16:51:35.105-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@335146450 wrapping com.mysql.cj.jdbc.ConnectionImpl@55cf9fff] for JDBC transaction
+2026-03-14T16:51:35.105-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@335146450 wrapping com.mysql.cj.jdbc.ConnectionImpl@55cf9fff] to manual commit
+2026-03-14T16:51:35.105-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T16:51:35.159-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T16:51:35.172-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T16:51:35.174-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T16:51:35.188-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T16:51:35.213-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T16:51:35.970-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T16:51:35.970-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@335146450 wrapping com.mysql.cj.jdbc.ConnectionImpl@55cf9fff]
+2026-03-14T16:51:35.980-07:00 DEBUG 13256 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@335146450 wrapping com.mysql.cj.jdbc.ConnectionImpl@55cf9fff] after transaction
+2026-03-14T16:59:25.355-07:00  INFO 8576 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 8576 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T16:59:25.463-07:00  INFO 8576 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T16:59:27.307-07:00  INFO 8576 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T16:59:27.512-07:00  INFO 8576 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T16:59:27.542-07:00  INFO 8576 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T16:59:27.662-07:00  INFO 8576 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2032 ms
+2026-03-14T16:59:28.023-07:00  INFO 8576 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T16:59:28.522-07:00  INFO 8576 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T16:59:28.530-07:00  INFO 8576 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.142 seconds (process running for 4.829)
+2026-03-14T16:59:59.501-07:00  INFO 8576 --- [maps] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T16:59:59.501-07:00  INFO 8576 --- [maps] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T16:59:59.586-07:00  INFO 8576 --- [maps] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 69 ms
+2026-03-14T17:00:09.645-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:00:09.645-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM `User` WHERE Username = ?]
+2026-03-14T17:00:09.645-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:00:09.645-07:00  INFO 8576 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:00:10.283-07:00  INFO 8576 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@34cb1c3a
+2026-03-14T17:00:10.291-07:00  INFO 8576 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:00:10.441-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL update and returning generated keys
+2026-03-14T17:00:10.447-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement
+2026-03-14T17:00:10.448-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:00:16.288-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:00:16.288-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:00:16.288-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:00:33.622-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:00:33.638-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@34cb1c3a] for JDBC transaction
+2026-03-14T17:00:33.638-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@34cb1c3a] to manual commit
+2026-03-14T17:00:33.747-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:00:33.792-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:00:33.800-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:00:33.801-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:00:33.810-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:00:33.811-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:00:34.560-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:00:34.560-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@34cb1c3a]
+2026-03-14T17:00:34.560-07:00 DEBUG 8576 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@34cb1c3a] after transaction
+2026-03-14T17:07:37.698-07:00  INFO 12664 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 12664 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:07:37.809-07:00  INFO 12664 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:07:40.221-07:00  INFO 12664 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:07:40.308-07:00  INFO 12664 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:07:40.310-07:00  INFO 12664 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:07:40.410-07:00  INFO 12664 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2449 ms
+2026-03-14T17:07:40.763-07:00  INFO 12664 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:07:41.484-07:00  INFO 12664 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:07:41.484-07:00  INFO 12664 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.547 seconds (process running for 5.207)
+2026-03-14T17:08:11.785-07:00  INFO 12664 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:08:11.785-07:00  INFO 12664 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:08:11.785-07:00  INFO 12664 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T17:08:12.016-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:08:12.016-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:08:12.016-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:08:12.016-07:00  INFO 12664 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:08:12.702-07:00  INFO 12664 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6cb9788b
+2026-03-14T17:08:12.718-07:00  INFO 12664 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:08:25.331-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:08:25.331-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@219511920 wrapping com.mysql.cj.jdbc.ConnectionImpl@6cb9788b] for JDBC transaction
+2026-03-14T17:08:25.347-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@219511920 wrapping com.mysql.cj.jdbc.ConnectionImpl@6cb9788b] to manual commit
+2026-03-14T17:08:25.426-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:08:25.428-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:08:25.436-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:08:25.438-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:08:25.492-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:08:25.495-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:08:26.201-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:08:26.201-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@219511920 wrapping com.mysql.cj.jdbc.ConnectionImpl@6cb9788b]
+2026-03-14T17:08:26.201-07:00 DEBUG 12664 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@219511920 wrapping com.mysql.cj.jdbc.ConnectionImpl@6cb9788b] after transaction
+2026-03-14T17:16:33.907-07:00  INFO 10692 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 10692 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:16:34.003-07:00  INFO 10692 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:16:36.271-07:00  INFO 10692 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:16:36.354-07:00  INFO 10692 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:16:36.356-07:00  INFO 10692 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:16:36.465-07:00  INFO 10692 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2305 ms
+2026-03-14T17:16:36.825-07:00  INFO 10692 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:16:37.314-07:00  INFO 10692 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:16:37.338-07:00  INFO 10692 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.243 seconds (process running for 4.875)
+2026-03-14T17:17:01.001-07:00  INFO 10692 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:17:01.001-07:00  INFO 10692 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:17:01.016-07:00  INFO 10692 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 15 ms
+2026-03-14T17:17:01.281-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:17:01.297-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:17:01.297-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:17:01.297-07:00  INFO 10692 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:17:01.875-07:00  INFO 10692 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a256cca
+2026-03-14T17:17:01.883-07:00  INFO 10692 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:17:11.312-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:17:11.312-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM `User` WHERE Username = ?]
+2026-03-14T17:17:11.312-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:17:11.312-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing SQL update and returning generated keys
+2026-03-14T17:17:11.312-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement
+2026-03-14T17:17:11.312-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:17:14.623-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:17:14.623-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:17:14.623-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:17:32.714-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:17:32.714-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1290263105 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca] for JDBC transaction
+2026-03-14T17:17:32.714-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1290263105 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca] to manual commit
+2026-03-14T17:17:32.737-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:17:32.770-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:17:32.777-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:17:32.777-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:17:32.784-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:17:32.835-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:17:33.529-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:17:33.537-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@1290263105 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca]
+2026-03-14T17:17:33.537-07:00 DEBUG 10692 --- [maps] [http-nio-8080-exec-6] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1290263105 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca] after transaction
+2026-03-14T17:25:16.908-07:00  INFO 5520 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 5520 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:25:16.928-07:00  INFO 5520 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:25:18.561-07:00  INFO 5520 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:25:18.782-07:00  INFO 5520 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:25:18.811-07:00  INFO 5520 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:25:18.914-07:00  INFO 5520 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1856 ms
+2026-03-14T17:25:19.379-07:00  INFO 5520 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:25:20.108-07:00  INFO 5520 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:25:20.128-07:00  INFO 5520 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.096 seconds (process running for 4.672)
+2026-03-14T17:25:29.267-07:00  INFO 5520 --- [maps] [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:25:29.267-07:00  INFO 5520 --- [maps] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:25:29.267-07:00  INFO 5520 --- [maps] [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T17:25:43.543-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:25:43.552-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM `User` WHERE Username = ?]
+2026-03-14T17:25:43.552-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:25:43.552-07:00  INFO 5520 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:25:44.198-07:00  INFO 5520 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@6ff5caaa
+2026-03-14T17:25:44.198-07:00  INFO 5520 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:25:44.278-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing SQL update and returning generated keys
+2026-03-14T17:25:44.283-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement
+2026-03-14T17:25:44.286-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:25:49.101-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:25:49.101-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:25:49.101-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:26:01.344-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:26:01.359-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@2083513953 wrapping com.mysql.cj.jdbc.ConnectionImpl@6ff5caaa] for JDBC transaction
+2026-03-14T17:26:01.366-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@2083513953 wrapping com.mysql.cj.jdbc.ConnectionImpl@6ff5caaa] to manual commit
+2026-03-14T17:26:01.470-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:26:01.472-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:26:01.514-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:26:01.515-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:26:01.528-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:26:01.542-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:26:02.209-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:26:02.217-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@2083513953 wrapping com.mysql.cj.jdbc.ConnectionImpl@6ff5caaa]
+2026-03-14T17:26:02.219-07:00 DEBUG 5520 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@2083513953 wrapping com.mysql.cj.jdbc.ConnectionImpl@6ff5caaa] after transaction
+2026-03-14T17:31:25.624-07:00  INFO 8928 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 8928 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:31:25.701-07:00  INFO 8928 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:31:27.623-07:00  INFO 8928 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:31:27.723-07:00  INFO 8928 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:31:27.727-07:00  INFO 8928 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:31:27.868-07:00  INFO 8928 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2007 ms
+2026-03-14T17:31:28.297-07:00  INFO 8928 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:31:28.787-07:00  INFO 8928 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:31:28.794-07:00  INFO 8928 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.096 seconds (process running for 4.812)
+2026-03-14T17:31:53.286-07:00  INFO 8928 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:31:53.286-07:00  INFO 8928 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:31:53.286-07:00  INFO 8928 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T17:31:53.532-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:31:53.532-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:31:53.548-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:31:53.549-07:00  INFO 8928 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:31:54.281-07:00  INFO 8928 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a256cca
+2026-03-14T17:31:54.303-07:00  INFO 8928 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:32:04.674-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:32:04.674-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1024689539 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca] for JDBC transaction
+2026-03-14T17:32:04.674-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1024689539 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca] to manual commit
+2026-03-14T17:32:04.674-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:32:04.689-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:32:04.745-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:32:04.754-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:32:04.799-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:32:04.801-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:32:05.525-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:32:05.537-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@1024689539 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca]
+2026-03-14T17:32:05.537-07:00 DEBUG 8928 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1024689539 wrapping com.mysql.cj.jdbc.ConnectionImpl@2a256cca] after transaction
+2026-03-14T17:36:33.684-07:00  INFO 7336 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 7336 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:36:33.738-07:00  INFO 7336 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:36:35.374-07:00  INFO 7336 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:36:35.652-07:00  INFO 7336 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:36:35.653-07:00  INFO 7336 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:36:35.746-07:00  INFO 7336 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1898 ms
+2026-03-14T17:36:36.243-07:00  INFO 7336 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:36:36.874-07:00  INFO 7336 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:36:36.885-07:00  INFO 7336 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.023 seconds (process running for 4.599)
+2026-03-14T17:36:54.972-07:00  INFO 7336 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:36:54.974-07:00  INFO 7336 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:36:54.978-07:00  INFO 7336 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2026-03-14T17:36:55.232-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:36:55.239-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:36:55.250-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:36:55.283-07:00  INFO 7336 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:36:55.939-07:00  INFO 7336 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@63911be2
+2026-03-14T17:36:55.944-07:00  INFO 7336 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:37:03.095-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:37:03.097-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:37:03.098-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:37:10.019-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:37:10.025-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1998980905 wrapping com.mysql.cj.jdbc.ConnectionImpl@63911be2] for JDBC transaction
+2026-03-14T17:37:10.028-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1998980905 wrapping com.mysql.cj.jdbc.ConnectionImpl@63911be2] to manual commit
+2026-03-14T17:37:10.068-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:37:10.087-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:37:10.096-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:37:10.121-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:37:10.155-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:37:10.178-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:37:10.905-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:37:10.908-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@1998980905 wrapping com.mysql.cj.jdbc.ConnectionImpl@63911be2]
+2026-03-14T17:37:10.912-07:00 DEBUG 7336 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1998980905 wrapping com.mysql.cj.jdbc.ConnectionImpl@63911be2] after transaction
+2026-03-14T17:42:10.941-07:00  INFO 7608 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 7608 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:42:11.030-07:00  INFO 7608 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:42:13.023-07:00  INFO 7608 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:42:13.132-07:00  INFO 7608 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:42:13.134-07:00  INFO 7608 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:42:13.243-07:00  INFO 7608 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2094 ms
+2026-03-14T17:42:13.632-07:00  INFO 7608 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:42:14.064-07:00  INFO 7608 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:42:14.080-07:00  INFO 7608 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 3.902 seconds (process running for 4.495)
+2026-03-14T17:42:35.133-07:00  INFO 7608 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:42:35.139-07:00  INFO 7608 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:42:35.155-07:00  INFO 7608 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T17:42:35.422-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:42:35.422-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:42:35.438-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:42:35.441-07:00  INFO 7608 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:42:36.146-07:00  INFO 7608 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@49ac88aa
+2026-03-14T17:42:36.146-07:00  INFO 7608 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:42:44.581-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:42:44.628-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1449786055 wrapping com.mysql.cj.jdbc.ConnectionImpl@49ac88aa] for JDBC transaction
+2026-03-14T17:42:44.675-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1449786055 wrapping com.mysql.cj.jdbc.ConnectionImpl@49ac88aa] to manual commit
+2026-03-14T17:42:44.700-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:42:44.701-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:42:44.710-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:42:44.710-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:42:44.720-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:42:44.739-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:42:45.444-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:42:45.444-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@1449786055 wrapping com.mysql.cj.jdbc.ConnectionImpl@49ac88aa]
+2026-03-14T17:42:45.444-07:00 DEBUG 7608 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1449786055 wrapping com.mysql.cj.jdbc.ConnectionImpl@49ac88aa] after transaction
+2026-03-14T17:44:57.953-07:00  INFO 1468 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 1468 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:44:58.033-07:00  INFO 1468 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:45:00.047-07:00  INFO 1468 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:45:00.180-07:00  INFO 1468 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:45:00.272-07:00  INFO 1468 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:45:00.452-07:00  INFO 1468 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2223 ms
+2026-03-14T17:45:00.832-07:00  INFO 1468 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:45:01.369-07:00  INFO 1468 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:45:01.457-07:00  INFO 1468 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.586 seconds (process running for 5.167)
+2026-03-14T17:45:17.396-07:00  INFO 1468 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:45:17.396-07:00  INFO 1468 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:45:17.396-07:00  INFO 1468 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T17:45:17.625-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:45:17.625-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:45:17.641-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:45:17.641-07:00  INFO 1468 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:45:18.481-07:00  INFO 1468 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22379f0f
+2026-03-14T17:45:18.662-07:00  INFO 1468 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:45:30.312-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:45:30.312-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@354055951 wrapping com.mysql.cj.jdbc.ConnectionImpl@22379f0f] for JDBC transaction
+2026-03-14T17:45:30.328-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@354055951 wrapping com.mysql.cj.jdbc.ConnectionImpl@22379f0f] to manual commit
+2026-03-14T17:45:30.328-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:45:30.389-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:45:30.398-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:45:30.414-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:45:30.431-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:45:30.433-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:45:31.145-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:45:31.145-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@354055951 wrapping com.mysql.cj.jdbc.ConnectionImpl@22379f0f]
+2026-03-14T17:45:31.145-07:00 DEBUG 1468 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@354055951 wrapping com.mysql.cj.jdbc.ConnectionImpl@22379f0f] after transaction
+2026-03-14T17:48:09.417-07:00  INFO 14984 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 14984 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:48:09.429-07:00  INFO 14984 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:48:11.418-07:00  INFO 14984 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:48:11.506-07:00  INFO 14984 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:48:11.507-07:00  INFO 14984 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:48:11.620-07:00  INFO 14984 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2057 ms
+2026-03-14T17:48:12.068-07:00  INFO 14984 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:48:12.567-07:00  INFO 14984 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:48:12.576-07:00  INFO 14984 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 4.134 seconds (process running for 4.722)
+2026-03-14T17:48:34.081-07:00  INFO 14984 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:48:34.081-07:00  INFO 14984 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:48:34.097-07:00  INFO 14984 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T17:48:34.344-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:48:34.344-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:48:34.344-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:48:34.360-07:00  INFO 14984 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:48:34.987-07:00  INFO 14984 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@3e165bd3
+2026-03-14T17:48:35.050-07:00  INFO 14984 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:48:45.013-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:48:45.029-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1788870614 wrapping com.mysql.cj.jdbc.ConnectionImpl@3e165bd3] for JDBC transaction
+2026-03-14T17:48:45.029-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1788870614 wrapping com.mysql.cj.jdbc.ConnectionImpl@3e165bd3] to manual commit
+2026-03-14T17:48:45.038-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : UserId = 1
+2026-03-14T17:48:45.039-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : RouteName = eger
+2026-03-14T17:48:45.041-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : OriginPlaceId = null
+2026-03-14T17:48:45.042-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : DestinationPlaceId = null
+2026-03-14T17:48:45.068-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:48:45.073-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:48:45.080-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:48:45.082-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:48:45.091-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:48:45.093-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:48:45.806-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:48:45.806-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@1788870614 wrapping com.mysql.cj.jdbc.ConnectionImpl@3e165bd3]
+2026-03-14T17:48:45.806-07:00 DEBUG 14984 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1788870614 wrapping com.mysql.cj.jdbc.ConnectionImpl@3e165bd3] after transaction
+2026-03-14T17:53:28.485-07:00  INFO 14016 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 14016 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T17:53:28.558-07:00  INFO 14016 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T17:53:30.293-07:00  INFO 14016 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T17:53:30.313-07:00  INFO 14016 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T17:53:30.344-07:00  INFO 14016 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T17:53:30.477-07:00  INFO 14016 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1758 ms
+2026-03-14T17:53:30.884-07:00  INFO 14016 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T17:53:31.363-07:00  INFO 14016 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T17:53:31.400-07:00  INFO 14016 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 3.708 seconds (process running for 4.28)
+2026-03-14T17:53:56.121-07:00  INFO 14016 --- [maps] [http-nio-8080-exec-3] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T17:53:56.121-07:00  INFO 14016 --- [maps] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T17:53:56.137-07:00  INFO 14016 --- [maps] [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 16 ms
+2026-03-14T17:53:56.394-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:53:56.394-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T17:53:56.410-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T17:53:56.410-07:00  INFO 14016 --- [maps] [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T17:53:57.096-07:00  INFO 14016 --- [maps] [http-nio-8080-exec-3] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@553e8fc4
+2026-03-14T17:53:57.111-07:00  INFO 14016 --- [maps] [http-nio-8080-exec-3] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T17:54:09.621-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T17:54:09.634-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@553e8fc4] for JDBC transaction
+2026-03-14T17:54:09.652-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@553e8fc4] to manual commit
+2026-03-14T17:54:09.687-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : UserId = 1
+2026-03-14T17:54:09.691-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : RouteName = gbtrh
+2026-03-14T17:54:09.704-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : OriginPlaceId = null
+2026-03-14T17:54:09.710-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : DestinationPlaceId = null
+2026-03-14T17:54:09.712-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T17:54:09.725-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T17:54:09.733-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T17:54:09.737-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T17:54:09.767-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:54:09.792-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T17:54:10.504-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T17:54:10.504-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@553e8fc4]
+2026-03-14T17:54:10.504-07:00 DEBUG 14016 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@2068108837 wrapping com.mysql.cj.jdbc.ConnectionImpl@553e8fc4] after transaction
+2026-03-14T18:01:14.721-07:00  INFO 5328 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Starting MapsApplication using Java 21.0.9 with PID 5328 (C:\Users\cwu\Documents\test\GalacticMaps\maps\target\classes started by cwu in C:\Users\cwu\Documents\test\GalacticMaps\maps)
+2026-03-14T18:01:14.750-07:00  INFO 5328 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : No active profile set, falling back to 1 default profile: "default"
+2026-03-14T18:01:16.750-07:00  INFO 5328 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8080 (http)
+2026-03-14T18:01:16.824-07:00  INFO 5328 --- [maps] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-03-14T18:01:16.826-07:00  INFO 5328 --- [maps] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.18]
+2026-03-14T18:01:16.967-07:00  INFO 5328 --- [maps] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 2031 ms
+2026-03-14T18:01:17.429-07:00  INFO 5328 --- [maps] [main] o.s.b.w.a.WelcomePageHandlerMapping      : Adding welcome page: class path resource [static/index.html]
+2026-03-14T18:01:17.893-07:00  INFO 5328 --- [maps] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8080 (http) with context path '/'
+2026-03-14T18:01:17.905-07:00  INFO 5328 --- [maps] [main] com.galicticmaps.maps.MapsApplication    : Started MapsApplication in 3.917 seconds (process running for 4.456)
+2026-03-14T18:01:36.785-07:00  INFO 5328 --- [maps] [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-03-14T18:01:36.800-07:00  INFO 5328 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-03-14T18:01:36.800-07:00  INFO 5328 --- [maps] [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-03-14T18:01:37.266-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T18:01:37.266-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT UserID, Username, PasswordHash FROM `User` WHERE Username = ?]
+2026-03-14T18:01:37.266-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-2] o.s.jdbc.datasource.DataSourceUtils      : Fetching JDBC Connection from DataSource
+2026-03-14T18:01:37.266-07:00  INFO 5328 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-03-14T18:01:38.099-07:00  INFO 5328 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@61aef0ab
+2026-03-14T18:01:38.099-07:00  INFO 5328 --- [maps] [http-nio-8080-exec-2] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-03-14T18:01:51.413-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T18:01:51.413-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@217409069 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab] for JDBC transaction
+2026-03-14T18:01:51.413-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@217409069 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab] to manual commit
+2026-03-14T18:01:51.425-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : UserId = 1
+2026-03-14T18:01:51.430-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : RouteName = erg
+2026-03-14T18:01:51.431-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : OriginPlaceId = null
+2026-03-14T18:01:51.451-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] c.g.maps.routing.RouteService            : DestinationPlaceId = null
+2026-03-14T18:01:51.468-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T18:01:51.497-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T18:01:51.505-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T18:01:51.506-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T18:01:51.524-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T18:01:51.547-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T18:01:52.083-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T18:01:52.083-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@382695789 wrapping com.mysql.cj.jdbc.ConnectionImpl@180885c4] for JDBC transaction
+2026-03-14T18:01:52.083-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@382695789 wrapping com.mysql.cj.jdbc.ConnectionImpl@180885c4] to manual commit
+2026-03-14T18:01:52.099-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : UserId = 1
+2026-03-14T18:01:52.099-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : RouteName = erg
+2026-03-14T18:01:52.099-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : OriginPlaceId = null
+2026-03-14T18:01:52.099-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] c.g.maps.routing.RouteService            : DestinationPlaceId = null
+2026-03-14T18:01:52.099-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T18:01:52.099-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T18:01:52.135-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T18:01:52.135-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T18:01:52.137-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T18:01:52.140-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T18:01:52.383-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T18:01:52.383-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@217409069 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab]
+2026-03-14T18:01:52.383-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T18:01:52.388-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-3] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@217409069 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab] after transaction
+2026-03-14T18:01:52.388-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@382695789 wrapping com.mysql.cj.jdbc.ConnectionImpl@180885c4]
+2026-03-14T18:01:52.394-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-4] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@382695789 wrapping com.mysql.cj.jdbc.ConnectionImpl@180885c4] after transaction
+2026-03-14T18:01:54.327-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Creating new transaction with name [com.galicticmaps.maps.routing.RouteService.saveFavoriteRoute]: PROPAGATION_REQUIRED,ISOLATION_DEFAULT
+2026-03-14T18:01:54.327-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Acquired Connection [HikariProxyConnection@1999417491 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab] for JDBC transaction
+2026-03-14T18:01:54.327-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Switching JDBC Connection [HikariProxyConnection@1999417491 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab] to manual commit
+2026-03-14T18:01:54.327-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] c.g.maps.routing.RouteService            : UserId = 1
+2026-03-14T18:01:54.395-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] c.g.maps.routing.RouteService            : RouteName = erg
+2026-03-14T18:01:54.396-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] c.g.maps.routing.RouteService            : OriginPlaceId = null
+2026-03-14T18:01:54.397-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] c.g.maps.routing.RouteService            : DestinationPlaceId = null
+2026-03-14T18:01:54.397-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL query
+2026-03-14T18:01:54.398-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [SELECT COUNT(*) FROM Route WHERE UserID = ?]
+2026-03-14T18:01:54.404-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL update
+2026-03-14T18:01:54.404-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.JdbcTemplate               : Executing prepared SQL statement [INSERT INTO Route (UserID, RouteName, OriginPlaceID, DestinationPlaceID) VALUES (?, ?, ?, ?)]
+2026-03-14T18:01:54.405-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T18:01:54.419-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.core.StatementCreatorUtils      : JDBC getParameterType call failed - using fallback method instead: java.sql.SQLException: Parameter metadata not available for the given statement
+2026-03-14T18:01:54.436-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Initiating transaction rollback
+2026-03-14T18:01:54.446-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Rolling back JDBC transaction on Connection [HikariProxyConnection@1999417491 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab]
+2026-03-14T18:01:54.466-07:00 DEBUG 5328 --- [maps] [http-nio-8080-exec-5] o.s.jdbc.support.JdbcTransactionManager  : Releasing JDBC Connection [HikariProxyConnection@1999417491 wrapping com.mysql.cj.jdbc.ConnectionImpl@61aef0ab] after transaction

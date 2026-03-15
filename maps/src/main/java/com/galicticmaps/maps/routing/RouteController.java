@@ -86,4 +86,15 @@ public ResponseEntity<?> getFavoriteRouteById(@PathVariable Integer routeId, @Re
                     .body(Map.of("message", "Unexpected error while deleting route."));
         }
     }
+
+    @GetMapping("/favorites")
+    public ResponseEntity<?> getFavorites(@RequestParam Integer userId) {
+        try {
+            return ResponseEntity.ok(routeService.getFavoriteRoutes(userId));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Could not load saved routes."));
+        }
+    }
 }
