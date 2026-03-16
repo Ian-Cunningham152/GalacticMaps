@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS `GalacticMaps`.`Route` (
   `RouteID` INT NOT NULL AUTO_INCREMENT,
   `UserID` INT NOT NULL,
   `RouteName` VARCHAR(45) NOT NULL,
+  `OriginPlaceID` VARCHAR(255) NOT NULL,
+  `DestinationPlaceID` VARCHAR(255) NOT NULL,
   PRIMARY KEY (`RouteID`),
   INDEX `UserID_idx` (`UserID` ASC) VISIBLE,
   CONSTRAINT `UserID`
