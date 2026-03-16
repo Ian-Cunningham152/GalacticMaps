@@ -1,4 +1,3 @@
-
 // Global variables
 let map;
 let directionsService;
@@ -402,7 +401,6 @@ window.initMap = initMap;
 
 //THIS IS CURRENTLY EMPTY CODE FOR FRONT END, IT NEEDS TO CONNECT TO THE DATABASE
 async function loadFavoriteRoutes() {
-    alert("loadFavoriteRoutes is running");
 
     const container = document.getElementById("favorites-panel");
 
@@ -425,9 +423,6 @@ async function loadFavoriteRoutes() {
             const row = document.createElement("div");
             row.className = "favorites-row";
 
-            // DEBUG: show where the row actually is
-            row.style.border = "2px solid red";
-
             const routeButton = document.createElement("button");
             routeButton.type = "button";
             const removeBtn = document.createElement("img");
@@ -440,8 +435,6 @@ async function loadFavoriteRoutes() {
                 routeButton.dataset.routeId = routes[i].routeId;
 
             routeButton.addEventListener("click", function () {
-              console.log("Saved route clicked:", routes[i].routeId);
-              alert("Clicked route " + routes[i].routeId);
               loadSavedRoute(routes[i].routeId);
             });
 
@@ -548,7 +541,6 @@ async function confirmDeleteFavoriteRoute() {
 }
 
 function toggleFavorites() {
-    alert("toggleFavorites is running");
 
     const panel = document.getElementById("favorites-panel");
 
