@@ -1,3 +1,4 @@
+
 // Global variables
 let map;
 let directionsService;
@@ -401,6 +402,8 @@ window.initMap = initMap;
 
 //THIS IS CURRENTLY EMPTY CODE FOR FRONT END, IT NEEDS TO CONNECT TO THE DATABASE
 async function loadFavoriteRoutes() {
+    alert("loadFavoriteRoutes is running");
+
     const container = document.getElementById("favorites-panel");
 
     if (!container) {
@@ -411,6 +414,8 @@ async function loadFavoriteRoutes() {
     container.innerHTML = "";
 
     try {
+        console.log("Current userId:", userId);
+
         const response = await fetch(`/api/routes/favorites?userId=${userId}`);
         const routes = await response.json();
 
@@ -420,26 +425,33 @@ async function loadFavoriteRoutes() {
             const row = document.createElement("div");
             row.className = "favorites-row";
 
+            // DEBUG: show where the row actually is
+            row.style.border = "2px solid red";
+
             const routeButton = document.createElement("button");
-
-            if (routes[i]) {
-                routeButton.innerText = routes[i].routeName;
-                routeButton.dataset.routeId = routes[i].routeId;
-            } else {
-                routeButton.innerText = `Route ${i + 1}`;
-                routeButton.disabled = true;
-            }
-
+            routeButton.type = "button";
             const removeBtn = document.createElement("img");
+
             removeBtn.className = "remove-route";
             removeBtn.src = "./images/Trashcan.png";
 
             if (routes[i]) {
+                routeButton.innerText = routes[i].routeName;
+                routeButton.dataset.routeId = routes[i].routeId;
+
+            routeButton.addEventListener("click", function () {
+              console.log("Saved route clicked:", routes[i].routeId);
+              alert("Clicked route " + routes[i].routeId);
+              loadSavedRoute(routes[i].routeId);
+            });
+
                 removeBtn.addEventListener("click", function () {
                     selectedFavoriteRouteId = routes[i].routeId;
                     removeRoute.style.display = "block";
                 });
             } else {
+                routeButton.innerText = `Route ${i + 1}`;
+                routeButton.disabled = true;
                 removeBtn.style.opacity = "0.4";
                 removeBtn.style.pointerEvents = "none";
             }
@@ -449,18 +461,6 @@ async function loadFavoriteRoutes() {
             container.appendChild(row);
         }
 
-        if (routes[i]) {
-    routeButton.innerText = routes[i].routeName;
-    routeButton.dataset.routeId = routes[i].routeId;
-
-    routeButton.addEventListener("click", function () {
-        loadSavedRoute(routes[i].routeId);
-    });
-} else {
-    routeButton.innerText = `Route ${i + 1}`;
-    routeButton.disabled = true;
-}
-
     } catch (error) {
         console.error("Error loading favorite routes:", error);
     }
@@ -468,7 +468,8 @@ async function loadFavoriteRoutes() {
 
 async function loadSavedRoute(routeId) {
     try {
-      console.log("Trying to load routeId:", routeId);
+        console.log("Trying to load routeId:", routeId);
+
         const response = await fetch(`/api/routes/favorites/${routeId}?userId=${userId}`);
         const route = await response.json();
 
@@ -484,6 +485,9 @@ async function loadSavedRoute(routeId) {
             stopover: true
         }));
 
+        console.log("Origin:", route.originPlaceId);
+        console.log("Destination:", route.destinationPlaceId);
+
         directionsService.route(
             {
                 origin: { placeId: route.originPlaceId },
@@ -492,23 +496,15 @@ async function loadSavedRoute(routeId) {
                 travelMode: google.maps.TravelMode.DRIVING
             },
             function (result, status) {
+
+                console.log("Directions status:", status);
+
                 if (status === "OK") {
                     directionsRenderer.setDirections(result);
-
-                    const routeData = result.routes[0];
-                    let totalDistance = 0;
-                    let totalDuration = 0;
-
-                    routeData.legs.forEach(leg => {
-                        totalDistance += leg.distance.value;
-                        totalDuration += leg.duration.value;
-                    });
-
-                    showDirections(totalDistance, totalDuration);
+                    showDirections(result);
                     document.getElementById("favorites-panel").style.display = "none";
                 } else {
-                    console.error("Directions status:", status);
-                    alert("Could not display saved route.");
+                    alert("Could not display saved route. Status: " + status);
                 }
             }
         );
@@ -551,21 +547,17 @@ async function confirmDeleteFavoriteRoute() {
     }
 }
 
-async function toggleFavorites() {
-    const container = document.getElementById("favorites-panel");
+function toggleFavorites() {
+    alert("toggleFavorites is running");
 
-    if (!container) {
-        console.error("favorites-panel not found");
-        return;
+    const panel = document.getElementById("favorites-panel");
+
+    if (panel.style.display === "none" || panel.style.display === "") {
+        panel.style.display = "block";
+        loadFavoriteRoutes();
+    } else {
+        panel.style.display = "none";
     }
-
-    if (container.style.display === "block") {
-        container.style.display = "none";
-        return;
-    }
-
-    container.style.display = "block";
-    await loadFavoriteRoutes();
 }
 
 //logout window/button logic

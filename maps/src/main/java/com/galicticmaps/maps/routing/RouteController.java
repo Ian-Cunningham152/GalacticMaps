@@ -24,16 +24,33 @@ public class RouteController {
         this.routeService = routeService;
     }
 
-  @GetMapping("/favorites/{routeId}")
-public ResponseEntity<?> getFavoriteRouteById(@PathVariable Integer routeId, @RequestParam Integer userId) {
-    try {
-        return ResponseEntity.ok(routeService.getFavoriteRouteById(userId, routeId));
-    } catch (Exception ex) {
-        ex.printStackTrace();
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-                .body(Map.of("message", "Could not load saved route."));
+    @GetMapping("/favorites")
+    public ResponseEntity<?> getFavoriteRoutes(@RequestParam Integer userId) {
+        try {
+            return ResponseEntity.ok(routeService.getFavoriteRoutes(userId));
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(Map.of("message", ex.getMessage()));
+        } catch (DataAccessException ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Database error while loading favorite routes."));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Unexpected error while loading favorite routes."));
+        }
     }
-}
+
+    @GetMapping("/favorites/{routeId}")
+    public ResponseEntity<?> getFavoriteRouteById(@PathVariable Integer routeId, @RequestParam Integer userId) {
+        try {
+            return ResponseEntity.ok(routeService.getFavoriteRouteById(userId, routeId));
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("message", "Could not load saved route."));
+        }
+    }
 
     @PostMapping("/favorites")
     public ResponseEntity<?> saveFavorite(@RequestBody FavoriteRouteRequest request) {

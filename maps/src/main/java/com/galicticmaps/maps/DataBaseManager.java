@@ -14,7 +14,7 @@ public class DataBaseManager {
 
     public static String dbUsername = "root";
 
-    public static String dbPassword = "password";
+    public static String dbPassword = "1793";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(dburl, dbUsername, dbPassword);
