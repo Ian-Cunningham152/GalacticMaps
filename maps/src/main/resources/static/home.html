@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GalacticMaps</title>
+    <link rel ="stylesheet" href="./styles/home.css">
+</head>
+
+<body>
+    <div class="layout">
+        <aside>
+            <div class="horizontal-scroll-container">
+                <div class="horizontal-scroll-content">
+                    <img src="./images/GalacticMapsLogo.png" alt="Logo">
+
+                    <h2>GalacticMaps</h2>
+                    <button onclick="useMyLocation()">Use My Location</button>
+                    <input id="origin-input" placeholder="Enter origin">
+                    <input id="destination-input" placeholder="Enter destination">
+                    <div id="waypoints-container"></div>
+                    <button onclick="addWaypoint()">Add Waypoint</button>
+                    <button onclick="startRoute()">Start Route</button>
+                    <button onclick="toggleFavorites()">Favorites</button>
+                    <div id="favorites-panel"></div>
+                    <button class="save-route-button" id="save-route-button">Save Route</button>
+                    <div id="directions-panel"></div>
+                </div>
+            </div>
+        </aside>
+    <div id="logout_button" class="logout_button">
+        <button id="open_logout_window">Logout</button>
+    </div>
+    <div id="map"></div>
+    <div id="logout_window" class="logout_window">
+        <div class="logout_content">
+            <h2>Are you sure you want to log out?</h2>
+            <button id="close_logout_window_button">No</button>
+            <button id="button" onclick="window.location.href='login.html'">Yes</button>
+        </div>
+    </div>
+    <div id="remove_route_window" class="remove_route_window">
+        <div class="remove_route_content">
+            <h2>Are you sure you want to delete this favorite route??</h2>
+            <button id="cancel_remove_route_button">No</button>
+            <button id="confirm_remove_route_button">Yes</button>
+        </div>
+    </div>
+    <div id="save_route_window" class="save_route_window">
+        <div class="save_route content">
+            <h2>What would you like to name this route?</h2>
+            <input id="Route_name" type="text" placeholder="Route Name" required>
+            <button id="close_save_route_button">Cancel</button>
+            <button id="confirm_save_route">Confirm</button>
+        </div>
+    </div>
+</div>
+
+<script src="./js/main.js"></script>
+<script src="./js/favorites.js"></script>
+
+<script async
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBrDIVNYbR_01jL1I4SnNRqyk-yC1NtaCg&libraries=places&callback=initMap">
+</script>
+
+</body>
+</html>

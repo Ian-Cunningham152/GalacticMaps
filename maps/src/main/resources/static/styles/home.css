@@ -1,0 +1,225 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.layout {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+}
+
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 358px;
+    right: 0;
+    bottom: 0;
+}
+
+#directions-panel {
+    margin-top: 10px;
+}
+
+input {
+    margin: 5px;
+    padding: 5px;
+    display: flex;
+    border: 3px solid black;
+}
+
+button {
+    padding: 5px 10px;
+    margin: 5px;
+    width: 100%;
+    border: 3px solid black;
+    background-color: white;
+}
+
+aside {
+    border: 3px solid black;
+    width: 350px;
+    background-color: rgba(98, 179, 255, 0.932);
+    margin: 2px 0 2px 2px;
+
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    z-index: 1000;
+    height: 100%;
+}
+
+
+.map-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+aside img {
+    width: 80px;
+    margin: 20px;
+}
+
+.horizontal-scroll-container {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: grey;
+}
+
+.horizontal-scroll-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.save-route-button {
+    display: none;
+}
+
+
+
+.waypoint-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.waypoint-row button {
+    border: 3px solid black;
+    background-color: white;
+    padding: 5px 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    flex: 0 0 auto;
+}
+
+.waypoint-row input {
+    flex: 1;
+}
+
+h2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    font-size: 200%;
+    font-family: "Comic Sans MS", "Comic Sans", cursive;
+    margin: 0;
+}
+
+.logout_button {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.logout_button button {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: lightgrey;
+}
+
+
+.favorites-row {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.favorites-row input {
+    flex: 1;
+}
+
+.favorites-row button {
+    flex: 1;
+}
+
+.remove-route {
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+/*logout window*/
+.logout_window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 20px;
+    background-color: lightgray;
+    z-index: 2000;
+    width: 400px;
+    text-align: center;
+}
+
+.logout_window button {
+    border: solid 3px black;
+    width: 100px;
+    margin: 10px 30px;
+}
+
+.close {
+    display: none;
+}
+
+.save_route_window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 20px;
+    background-color: lightgray;
+    z-index: 2000;
+    width: 400px;
+    text-align: center;
+}
+
+.save_route_window button {
+    border: solid 3px black;
+    width: 100px;
+    margin: 10px 30px;
+}
+
+.save_route_window input {
+    display: block;    
+    margin: 10px auto; 
+    width: 80%;           
+    padding: 8px;
+    font-size: 16px;
+    box-sizing: border-box; 
+    text-align: center;     
+}
+
+/*logout window*/
+.remove_route_window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid black;
+    padding: 20px;
+    background-color: lightgray;
+    z-index: 3000;
+    width: 400px;
+    text-align: center;
+}
+
+.remove_route_window button {
+    border: solid 3px black;
+    width: 100px;
+    margin: 10px 30px;
+}

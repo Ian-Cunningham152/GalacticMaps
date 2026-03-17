@@ -1,0 +1,10 @@
+How to run:
+1. make sure the database is running on MySQL
+2. go to \java\com\galicticmaps\maps\DataBaseManager.java and run
+3. go to \java\com\galicticmaps\maps\MapsApplication.java and run
+4. go to web browser and paste http://localhost:8080
+
+
+If you get an error in step 3 due to springboot currently running - kill the current process.
+
+FOR TESTING: you must kill the current iteration of springboot to see each change occur :)
